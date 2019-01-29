@@ -6,7 +6,7 @@
 
  Plugin de [Mapea](https://github.com/sigcorporativo-ja/Mapea4) desarrollado por el [Instituto de Estadística y Cartografía](https://www.juntadeandalucia.es/institutodeestadisticaycartografia) para añadir capas WMS de forma dinámica únicamente indicado la URL del servicio
 
- ![Imagen](./images/addServices1.PNG)
+ ![Imagen](./images/addservices1.PNG)
 
  
 ## Recursos y uso
