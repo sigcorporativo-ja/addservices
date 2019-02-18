@@ -59,10 +59,12 @@
 
 .m-addservices-container>#m-addservices-results>.table-results>table {
     padding: 2%;
+    table-layout: fixed;
 }
 
 .m-addservices-container>#m-addservices-results>.table-results>table>tbody>tr>td {
     width: 50%;
+    word-break: break-all;
 }
 
 .m-addservices-container>#m-addservices-results>.table-results>table span {
@@ -174,6 +176,14 @@ div#m-addservices-results>div.table-results>div.button>button.m-addservices-clea
 
 .m-addservices-container:not(.m-searching) div.m-searching-result {
     display: none;
+}
+
+.m-addservices-container .m-search-btn {
+    order: 1
+}
+
+.m-addservices-container .m-clear-btn {
+    order: 3
 }
 
 /***************
