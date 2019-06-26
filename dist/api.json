@@ -1,0 +1,24 @@
+{
+  "url": {
+    "name": "addServices",
+    "separator": "*"
+  },
+  "constructor": "M.plugin.AddServices",
+  "files": {
+    "ol": {
+      "scripts": "addservices.ol.min.js",
+      "styles": "addservices.min.css"
+    }
+  },
+  "metadata": {
+    "name": "addServices",
+    "description": "Carga de servicios WMS",
+    "text": "Carga de servicios WMS desde una URL",
+    "version": "1.0.0",
+    "date": "",
+    "author": "",
+    "org": "",
+    "tags": "mapea,plugin",
+    "icon": "./facade/assets/icons/icons.svg"
+  }
+}
