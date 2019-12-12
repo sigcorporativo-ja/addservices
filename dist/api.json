@@ -4,15 +4,7 @@
     "separator": "*"
   },
   "constructor": "M.plugin.AddServices",
-  "parameters": [{
-    "type": "object",
-    "properties": [{
-      "type": "enum",
-      "name": "position",
-      "position": 0,
-      "possibleValues": ["TL", "TR", "BR", "BL"]
-    }]
-  }],
+  "parameters": [],
   "files": {
     "ol": {
       "scripts": "addservices.ol.min.js",
@@ -21,10 +13,10 @@
   },
   "metadata": {
     "name": "AddServices",
-    "description": "Adds layer from WMS service",
-    "text": "Adds layer from WMS service to map",
+    "description": "Añade servicio WMS",
+    "text": "Añade un capa desde un servicio WMS",
     "version": "1.0.0",
-    "date": "July 9, 2019",
+    "date": "Diciembre, 2019",
     "author": "",
     "org": "Consejería de Medioambiente y Ordenación del Territorio de la Junta de Andalucía",
     "tags": "mapea,plugin",
