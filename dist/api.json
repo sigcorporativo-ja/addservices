@@ -1,25 +1,26 @@
 {
   "url": {
-    "name": "AddServices",
+    "name": "AddLayers",
     "separator": "*"
   },
-  "constructor": "M.plugin.AddServices",
+  "constructor": "M.plugin.AddLayers",
   "parameters": [],
   "files": {
     "ol": {
-      "scripts": ["addservices.ol.min.js"],
-      "styles": ["addservices.ol.min.css"]
+      "scripts": ["addlayers.ol.min.js"],
+      "styles": ["addlayers.ol.min.css"]
     }
   },
   "metadata": {
-    "name": "AddServices",
-    "description": "Añade servicio WMS",
-    "text": "Añade un capa desde un servicio WMS",
-    "version": "1.0.0",
+    "name": "AddLayers",
+    "description": "Añadir capas",
+    "text": "Permite añadir capas locales al mapa",
+    "version": "1.0.1",
     "date": "Diciembre, 2019",
     "author": "",
-    "org": "Consejería de Medioambiente y Ordenación del Territorio de la Junta de Andalucía",
+    "org": "Instituto de Estadística y Cartografía",
     "tags": "mapea,plugin",
-    "icon": "./facade/assets/icons/icons.svg"
+    "icon": "./facade/assets/icons/icons.svg",
+    "centralized": true
   }
 }
