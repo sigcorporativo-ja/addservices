@@ -1,11 +1,11 @@
-import namespace from 'mapea-util/decorator';
-import AddServicesControl from './addservicesControl.js';
-import css from 'assets/css/addservices.css';
+/**
+ * @module M/plugin/AddServices
+ */
 
+import AddServicesControl from './addservicesControl';
+import 'assets/css/addservices';
 
-
-@namespace("M.plugin")
-class AddServices extends M.Plugin {
+export default class AddServices extends M.Plugin {
 
   /**
 * Name to identify this plugin
@@ -62,13 +62,13 @@ class AddServices extends M.Plugin {
    * @api stable
    */
   addTo(map) {
-    const control = new M.control.AddServicesControl();
+    const control = new AddServicesControl();
     control.on(M.evt.ADDED_TO_MAP, () => {
       this.fire(M.evt.ADDED_TO_MAP);
     });
     this.controls_.push(control);
     this.map_ = map;
-    this.panel_ = new M.ui.Panel(M.plugin.AddServices.NAME, {
+    this.panel_ = new M.ui.Panel(AddServicesControl.NAME, {
       'collapsible': true,
       'className': 'm-addservices',
       'collapsedButtonClass': 'g-cartografia-capas',
@@ -92,5 +92,5 @@ class AddServices extends M.Plugin {
     this.controls_ = null;
     this.panel_ = null;
     this.name = null;
-  };
+  }
 }

@@ -1,8 +1,13 @@
-import namespace from 'mapea-util/decorator';
-import AddServicesImplControl from 'impl/addservicesControl';
+/**
+ * @module M/control/AddServicesControl
+ */
 
-@namespace("M.control")
-export class AddServicesControl extends M.Control {
+import AddServicesImplControl from 'impl/addservicesControl';
+import template from 'templates/addservices';
+import template_result from 'templates/addservices_results';
+import AddServices from './addservices'
+
+export default class AddServicesControl extends M.Control {
 
   /**
    * @classdesc
@@ -15,12 +20,12 @@ export class AddServicesControl extends M.Control {
    */
   constructor() {
     // 1. checks if the implementation can create PluginControl
-    if (M.utils.isUndefined(M.impl.control.AddServicesControl)) {
+    if (M.utils.isUndefined(AddServicesImplControl)) {
       M.exception('La implementación usada no puede crear controles PluginControl');
     }
     // 2. implementation of this control
-    let impl = new M.impl.control.AddServicesControl();
-    super(impl, M.plugin.AddServices.NAME);
+    let impl = new AddServicesImplControl();
+    super(impl, AddServices.NAME);
 
     this.urlService_ = null;
     this.btnAddUrl_ = null;
@@ -54,6 +59,7 @@ export class AddServicesControl extends M.Control {
     this.btnAddUrl_.addEventListener('click', (evt) => this.readCapabilities_(evt));
     this.btnClear_.addEventListener('click', (evt) => this.removeContains_(evt));
   }
+
   /**
    * This function creates the view
    *
@@ -64,12 +70,31 @@ export class AddServicesControl extends M.Control {
    */
   createView(map) {
     this.facadeMap_ = map;
+    if (!M.template.compileSync) { // JGL: retrocompatibilidad Mapea4
+      M.template.compileSync = (string, options) => {
+        let templateCompiled;
+        let templateVars = {};
+        let parseToHtml;
+        if (!M.utils.isUndefined(options)) {
+          templateVars = M.utils.extends(templateVars, options.vars);
+          parseToHtml = options.parseToHtml;
+        }
+        const templateFn = Handlebars.compile(string);
+        const htmlText = templateFn(templateVars);
+        if (parseToHtml !== false) {
+          templateCompiled = M.utils.stringToHtml(htmlText);
+        } else {
+          templateCompiled = htmlText;
+        }
+        return templateCompiled;
+      };
+    }
+    
     return new Promise((success, fail) => {
-      M.template.compile('addservices.html').then((html) => {
-        //Establecer eventos
-        this.addEvents(html);
-        success(html);
-      });
+      const html = M.template.compileSync(template);
+      // Añadir código dependiente del DOM
+      this.addEvents(html);
+      success(html);
     });
   }
 
@@ -106,7 +131,7 @@ export class AddServicesControl extends M.Control {
     else {
       M.dialog.error("Los campos están vacíos.");
     }
-  };
+  }
 
   /**
  * This function show results
@@ -120,7 +145,7 @@ export class AddServicesControl extends M.Control {
       result.push(capability.getImpl());
     });
 
-    M.template.compile('addservices_results.html', {
+    /*M.template.compile(template_result, {
       'vars': {
         'result': result
       }
@@ -133,9 +158,24 @@ export class AddServicesControl extends M.Control {
       }
       this.containerResults_.getElementsByTagName('th')['m-addservices-selectall'].addEventListener('click', (evt) => this.registerCheck_(evt));
       this.containerResults_.getElementsByClassName('m-addservices-add')[0].addEventListener('click', (evt) => this.addLayers_(evt));
-    });
+    });*/
 
-  };
+    const html = M.template.compileSync(template_result, {
+      'vars': {
+        'result': result
+      }
+    });
+      this.containerResults_.innerHTML = html.innerHTML;
+      M.utils.enableTouchScroll(this.containerResults_);
+      let results = this.containerResults_.getElementsByTagName('span');
+      for (let i = 0, ilen = results.length; i < ilen; i++) {
+        results[i].addEventListener('click', (evt) => this.registerCheck_(evt));
+      }
+      this.containerResults_.getElementsByTagName('th')['m-addservices-selectall'].addEventListener('click', (evt) => this.registerCheck_(evt));
+      this.containerResults_.getElementsByClassName('m-addservices-add')[0].addEventListener('click', (evt) => this.addLayers_(evt));
+   
+
+  }
 
   /**
   * This function registers the marks or unmarks check and click allselect
@@ -166,7 +206,7 @@ export class AddServicesControl extends M.Control {
         this.stateSelectAll_ = true;
       }
     }
-  };
+  }
 
 
   /**
@@ -181,7 +221,7 @@ export class AddServicesControl extends M.Control {
       unSelect[i].classList.remove('g-cartografia-check3');
       unSelect[i].classList.add('g-cartografia-check2');
     }
-  };
+  }
 
   /**
   * This function select checkbox
@@ -195,7 +235,7 @@ export class AddServicesControl extends M.Control {
       select[i].classList.remove('g-cartografia-check2');
       select[i].classList.add('g-cartografia-check3');
     }
-  };
+  }
 
   /**
   * This function add layers
@@ -222,7 +262,7 @@ export class AddServicesControl extends M.Control {
       }
       this.facadeMap_.addLayers(layers);
     }
-  };
+  }
 
   /**
   * This function remove results show
@@ -235,7 +275,7 @@ export class AddServicesControl extends M.Control {
     evt.preventDefault();
     this.containerResults_.innerHTML = "";
     this.urlService_.value = "";
-  };
+  }
 
   /**
   * This function checks if an object is equals to this control
@@ -251,7 +291,7 @@ export class AddServicesControl extends M.Control {
       equals = (this.name === obj.name);
     }
     return equals;
-  };
+  }
 
   /**
    * @public

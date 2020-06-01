@@ -1,7 +1,7 @@
-import namespace from 'mapea-util/decorator';
-
-@namespace("M.impl.control")
-export class AddServicesControl extends M.impl.Control {
+/**
+ * @module M/impl/control/AddServicesControl
+ */
+export default class AddServicesControl extends M.impl.Control {
   /**
    * @classdesc
    * Main constructor of the AddServicesControl.
