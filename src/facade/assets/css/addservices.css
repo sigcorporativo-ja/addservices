@@ -1,0 +1,278 @@
+/*********************
+       GENERAL
+*********************/
+
+.m-addservices-container {
+    color: #404040;
+    width: 100%;
+    font-family: Muli, "sans-serif" !important;
+    color: #6c6c6c;
+}
+
+@media only screen and (min-width: 769px) {
+    .m-addservices-container {
+        min-width: 440px;
+    }
+}
+
+/*********************
+      ADDSERVICES TITLES
+ *********************/
+
+.m-addservices-container div.title {
+    line-height: 40px;
+    text-align: center;
+    height: 39px;
+    border-bottom: 1px solid rgba(0, 0, 0, .13);
+    font-size: 15px;
+    background-color: rgb(255, 255, 255) !important;
+    color: #404040;
+}
+
+/*********************
+      ADDSERVICES FORM AND RESULTS
+ *********************/
+
+.m-addservices-container>div.search-panel {
+    -webkit-display: flex;
+    display: flex;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), 0 -1px 0px rgba(0, 0, 0, 0.02);
+    background-color: white;
+    position: relative;
+}
+
+.m-addservices-container>div.search-panel>input.m-input-search {
+    width: 100%;
+    margin: 0px;
+    padding: 10px;
+    border: 0px;
+}
+
+@media only screen and (min-width: 769px) {
+    .m-addservices-container>div.search-panel>input.m-input-search {
+        min-width: 278px;
+    }
+}
+
+.m-addservices-container>#m-addservices-results>.table-results {
+    background-color: rgba(255, 255, 255, 1);
+    width: 100%;
+    max-height: 47vh;
+}
+
+.m-addservices-container>#m-addservices-results>.table-results>table {
+    padding: 2%;
+    table-layout: fixed;
+}
+
+.m-addservices-container>#m-addservices-results>.table-results>table>tbody>tr>td {
+    width: 50%;
+    word-break: break-all;
+}
+
+.m-addservices-container>#m-addservices-results>.table-results>table span {
+    cursor: pointer;
+}
+
+.m-addservices-container>#m-addservices-results>.table-results>table>tbody>tr>td:nth-child(2n) {
+    width: 20%;
+    text-align: center;
+}
+
+.m-addservices-container>#m-addservices-results>.table-results>table th:first-child {
+    cursor: default;
+}
+
+.m-addservices-container>#m-addservices-results>.table-results>table th:nth-child(2) {
+    cursor: pointer;
+    text-align: center;
+}
+
+.m-addservices-container>#m-addservices-results>.table-results>table>tbody>tr:nth-child(2n+1) {
+    background-color: rgba(244, 244, 244, 0.4);
+}
+
+.m-addservices-container>div.form>#m-addservice-url {
+    flex: 1;
+}
+
+.m-addservices-container>div.form>#m-addservices-btnurl {
+    flex: 0 1;
+}
+
+#m-addservices-results {
+    opacity: 1;
+    max-height: 80vh;
+    -webkit-transition: max-width .75s ease 0s, max-height .5s ease 0s, opacity 1s ease .2s;
+    transition: max-width .75s ease 0s, max-height .5s ease 0s, opacity 1s ease .2s;
+    overflow: hidden;
+    overflow-y: auto;
+    padding-right: 0px;
+}
+
+/*********************
+      BUTTONS
+ *********************/
+
+div#m-addservices-results>div.table-results>div.button {
+    width: 100%;
+    margin-top: 0px;
+    text-align: center;
+    display: table;
+    background-color: #eaeaea;
+}
+
+div#m-addservices-results>div.table-results>div.button>button.m-addservices-add,
+div#m-addservices-results>div.table-results>div.button>button.m-addservices-clear {
+    border-radius: 4px;
+    border: 1px solid rgba(0, 0, 0, 0.4);
+    font-size: 15px;
+    line-height: 25px;
+    cursor: pointer;
+    -webkit-transition: opacity 0.25s ease 0s;
+    transition: opacity 0.25s ease 0s;
+    color: #404040;
+    background-color: white;
+}
+
+div#m-addservices-results>div.table-results>div.button>button.m-addservices-add:disabled {
+    cursor: not-allowed
+}
+
+div#m-addservices-results>div.table-results>div.button>button {
+    width: 45%;
+    margin: 10px 1% 10px 1%;
+    padding: 5px;
+    background-color: #fff;
+    font-family: 'Muli', 'sans-serif' !important;
+    cursor: pointer;
+}
+
+div#m-addservices-results>div.table-results>div.button>button.m-addservices-add i,
+div#m-addservices-results>div.table-results>div.button>button.m-addservices-clear i {
+    font-size: 20px;
+    vertical-align: text-bottom;
+    margin-right: 5px;
+}
+
+/*********************
+      ADDSERVICES SEARCHING
+ *********************/
+
+.m-searching-result {
+    height: 100%;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.6);
+    position: absolute;
+    top: 0;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+}
+
+.m-searching-result:before {
+    margin: 0 auto;
+    -webkit-animation: mloading 1s linear infinite;
+    -moz-animation: mloading 1s linear infinite;
+    animation: mloading 1s linear infinite;
+}
+
+.m-addservices-container:not(.m-searching) div.m-searching-result {
+    display: none;
+}
+
+.m-addservices-container .m-search-btn {
+    order: 1
+}
+
+.m-addservices-container .m-clear-btn {
+    order: 3
+}
+
+/***************
+        PANEL
+ ***************/
+
+/*.m-areas > div.m-area > div.m-panel > div.m-panel-controls {
+    background-color: rgb(244, 244, 244);
+ }*/
+
+.m-areas>div.m-area>div.m-panel.m-addservices.collapsed {
+    color: #005372;
+    max-height: 40px;
+}
+
+.m-areas>div.m-area>div.m-panel.m-addservices>button.m-panel-btn {
+    position: absolute;
+    left: -40px;
+    background-color: #005372;
+    color: white;
+    z-index: 999999;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), 0 -1px 0px rgba(0, 0, 0, 0.02);
+}
+
+@media only screen and (max-width: 768px) {
+    .m-areas>div.m-area>div.m-panel.m-addservices>button.m-panel-btn {
+        background-color: transparent;
+        position: absolute;
+        left: initial;
+        right: 0;
+        color: #fff;
+        z-index: 999999;
+        box-shadow: none;
+    }
+}
+
+.m-areas>div.m-area>div.m-panel.m-addservices.collapsed>button.m-panel-btn {
+    position: inherit;
+    color: #005372;
+    left: 0;
+    box-shadow: none;
+}
+
+.m-areas>div.m-area>div.m-panel.m-addservices.collapsed>div.m-panel-controls {
+    padding: 0px;
+}
+
+.m-areas>div.m-area>div.m-panel.m-addservices.opened {
+    border-top-left-radius: 0;
+    background-color: #f4f4f4;
+}
+
+@media only screen and (max-width: 768px) {
+    .m-areas>div.m-area>div.m-panel.m-addservices.opened {
+        margin-left: 0;
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        margin: 0;
+        z-index: 10000;
+    }
+
+    .m-areas>div.m-area>div.m-panel.m-addservices.collapsed>div.m-panel-controls {
+        max-height: 100vh;
+        width: 100%;
+    }
+
+    .m-areas>div.m-area>div.m-panel.m-addservices.opened>div.m-panel-controls {
+        max-width: 100vw;
+        max-height: 100%;
+    }
+}
+
+.m-addservices-container .m-addservices-container {
+    margin: 0;
+    top: 0px;
+    right: 0px;
+    max-height: 100%;
+    text-align: left;
+    background-color: #f4f4f4;
+}
+
+@media only screen and (max-width: 768px) {
+    .m-addservices-container .table-results span {
+        font-size: 2em;
+    }
+}
