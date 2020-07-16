@@ -2,7 +2,7 @@
 
 Plugin desarrollado por el [Instituto de Estadística y Cartografía](https://www.juntadeandalucia.es/institutodeestadisticaycartografia) para añadir capas WMS de forma dinámica únicamente indicado la URL del servicio. 
 
-![Imagen1](../img/addServices_1.png)
+![Imagen1](images/addServices_1.png)
 
 
 ## Dependencias
