@@ -3,7 +3,10 @@
 *********************/
 
 .m-addservices-container {
+    color: #404040;
     width: 100%;
+    font-family: Muli, "sans-serif" !important;
+    color: #6c6c6c;
 }
 
 @media only screen and (min-width: 769px) {
@@ -22,8 +25,8 @@
     height: 39px;
     border-bottom: 1px solid rgba(0, 0, 0, .13);
     font-size: 15px;
-    background-color: #00897B;
-    color: white;
+    background-color: rgb(255, 255, 255) !important;
+    color: #404040;
 }
 
 /*********************
@@ -116,7 +119,7 @@ div#m-addservices-results>div.table-results>div.button {
     margin-top: 0px;
     text-align: center;
     display: table;
-    background-color: #FFB74D;
+    background-color: #eaeaea;
 }
 
 div#m-addservices-results>div.table-results>div.button>button.m-addservices-add,
@@ -126,10 +129,10 @@ div#m-addservices-results>div.table-results>div.button>button.m-addservices-clea
     font-size: 15px;
     line-height: 25px;
     cursor: pointer;
-    opacity: 0.75;
     -webkit-transition: opacity 0.25s ease 0s;
     transition: opacity 0.25s ease 0s;
     color: #404040;
+    background-color: white;
 }
 
 div#m-addservices-results>div.table-results>div.button>button.m-addservices-add:disabled {
@@ -195,15 +198,15 @@ div#m-addservices-results>div.table-results>div.button>button.m-addservices-clea
  }*/
 
 .m-areas>div.m-area>div.m-panel.m-addservices.collapsed {
-    color: #00897B;
+    color: #005372;
     max-height: 40px;
 }
 
 .m-areas>div.m-area>div.m-panel.m-addservices>button.m-panel-btn {
     position: absolute;
     left: -40px;
-    background-color: #00897B;
-    color: #fff;
+    background-color: #005372;
+    color: white;
     z-index: 999999;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), 0 -1px 0px rgba(0, 0, 0, 0.02);
 }
@@ -222,7 +225,7 @@ div#m-addservices-results>div.table-results>div.button>button.m-addservices-clea
 
 .m-areas>div.m-area>div.m-panel.m-addservices.collapsed>button.m-panel-btn {
     position: inherit;
-    color: #00897B;
+    color: #005372;
     left: 0;
     box-shadow: none;
 }
@@ -247,10 +250,12 @@ div#m-addservices-results>div.table-results>div.button>button.m-addservices-clea
         margin: 0;
         z-index: 10000;
     }
+
     .m-areas>div.m-area>div.m-panel.m-addservices.collapsed>div.m-panel-controls {
         max-height: 100vh;
         width: 100%;
     }
+
     .m-areas>div.m-area>div.m-panel.m-addservices.opened>div.m-panel-controls {
         max-width: 100vw;
         max-height: 100%;

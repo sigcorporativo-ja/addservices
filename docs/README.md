@@ -1,24 +1,51 @@
-# Add Services
+# M.plugin.AddServices
 
-[![Build Tool](https://img.shields.io/badge/build-Webpack-green.svg)](https://github.com/sigcorporativo-ja/Mapea4-dev-webpack)  
+Plugin desarrollado por el [Instituto de Estadística y Cartografía](https://www.juntadeandalucia.es/institutodeestadisticaycartografia) para añadir capas WMS de forma dinámica únicamente indicado la URL del servicio. 
 
-## Descripción
+![Imagen1](images/addServices_1.png)
 
- Plugin de [Mapea](https://github.com/sigcorporativo-ja/Mapea4) desarrollado por el [Instituto de Estadística y Cartografía](https://www.juntadeandalucia.es/institutodeestadisticaycartografia) para añadir capas WMS de forma dinámica únicamente indicado la URL del servicio
 
- ![Imagen](./images/addservices1.PNG)
+## Dependencias
+- addservices.ol.min.js
+- addservices.ol.min.css
 
- 
-## Recursos y uso
+# Parámetros
+El constructor se inicializa con un JSON de _options_ con los siguientes atributos:
 
-- js: addservices.ol.min.js
-- css: addservices.min.css
+- **http**. Valor booleano que indica que se acepte servicios bajo el protocolo http
 
+- **https**. Valor booleano que indica que se acepte servicios bajo el protocolo https
+
+# Ejemplos
+
+## Ejemplo 1
 ```javascript
-// crear el plugin
-var mp = new M.plugin.AddServices();
+   const map = M.map({
+     container: 'map'
+   });
 
-// añadirlo al mapa
-myMap.addPlugin(mp);
+   // crear el plugin
+   const mp = new M.plugin.AddServices();
+
+   // añadirlo al mapa
+   map.addPlugin(mp);
 });
-```  
+```
+
+## Ejemplo 2
+```javascript
+   const map = M.map({
+     container: 'map'
+   });
+
+   // crear el plugin. Sólo admitiría servicios WMS bajo https
+   const mp = new M.plugin.AddServices({
+     http: false,
+     https: true
+   }
+   );
+
+   // añadirlo al mapa
+   map.addPlugin(mp);
+});
+```

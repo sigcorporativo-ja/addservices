@@ -1,6 +1,39 @@
 {
-   "url": {
-      "name": "AddServices"
-   },
-   "constructor": "M.plugin.AddServices"
+  "url": {
+    "name": "addservices",
+    "separator": "*"
+  },
+  "constructor": "M.plugin.AddServices",
+  "parameters": [{
+    "type": "object",
+    "properties": [{
+        "type": "simple",
+        "name": "http",
+        "position": 0
+      },
+      {
+        "type": "simple",
+        "name": "https",
+        "position": 1
+      }
+    ]
+  }],
+  "files": {
+    "ol": {
+      "scripts": ["addservices.ol.min.js"],
+      "styles": ["addservices.ol.min.css"]
+    }
+  },
+  "metadata": {
+    "name": "addservices",
+    "description": "Añade servicio WMS",
+    "text": "Añade un capa desde un servicio WMS",
+    "version": "1.1.0",
+    "date": "Junio, 2020",
+    "author": "",
+    "org": "Instituto de Estadística y Cartografía. Junta de Andalucía",
+    "tags": "mapea,plugin",
+    "icon": "./facade/assets/icons/icons.svg",
+    "centralized": true
+  }
 }
