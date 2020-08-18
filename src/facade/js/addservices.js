@@ -1,22 +1,11 @@
 /**
  * @module M/plugin/AddServices
  */
-
-import AddServicesControl from './addservicesControl';
 import 'assets/css/addservices';
+import AddServicesControl from './addservicescontrol';
+import api from '../../api';
 
 export default class AddServices extends M.Plugin {
-
-  /**
-* Name to identify this plugin
-* @const
-* @type {string}
-* @public
-* @api stable
-*/
-  static get NAME() {
-    return 'addservices';
-  }
   /**
    * @classdesc
    * Main facade plugin object. This class creates a plugin
@@ -27,8 +16,7 @@ export default class AddServices extends M.Plugin {
    * @param {Object} impl implementation object
    * @api stable
    */
-  constructor() {
-
+  constructor(options = {}) {
     super();
     /**
      * Facade of the map
@@ -45,12 +33,25 @@ export default class AddServices extends M.Plugin {
     this.controls_ = [];
 
     /**
-     * add your variables
-     *
+     * Metadata from api.json
+     * @private
+     * @type {Object}
      */
+    this.metadata_ = api.metadata;
 
-    this.panel_ = null;
+    /**
+     * WMS service protocol type
+     * @type {Boolean}
+     */
+    this.http = false;
+    if (options.http !== undefined && (options.http === true || options.http === 'true')) {
+      this.http = true;
+    }
 
+    this.https = true;
+    if (options.https !== undefined && (options.https === false || options.https === 'false')) {
+      this.https = false;
+    }
   }
 
   /**
@@ -62,35 +63,55 @@ export default class AddServices extends M.Plugin {
    * @api stable
    */
   addTo(map) {
-    const control = new AddServicesControl();
+    const values = {
+      http: this.http,
+      https: this.https,
+    };
+    const control = new AddServicesControl(values);
     control.on(M.evt.ADDED_TO_MAP, () => {
       this.fire(M.evt.ADDED_TO_MAP);
     });
     this.controls_.push(control);
     this.map_ = map;
-    this.panel_ = new M.ui.Panel(AddServicesControl.NAME, {
-      'collapsible': true,
-      'className': 'm-addservices',
-      'collapsedButtonClass': 'g-cartografia-capas',
-      'position': M.ui.position.TR,
-      'tooltip': "Cargar WMS"
+    this.panel_ = new M.ui.Panel('panelAddServices', {
+      collapsible: true,
+      className: 'm-addservices',
+      collapsedButtonClass: 'g-cartografia-capas',
+      position: M.ui.position.TR,
+      tooltip: 'Cargar WMS',
     });
     this.panel_.addControls(this.controls_);
-    map.addPanels(this.panel_);
+    this.map_.addPanels(this.panel_);
   }
 
   /**
- * This function destroys this plugin
- *
- * @public
- * @function
- * @api stable
- */
+   * This function destroys this plugin
+   *
+   * @public
+   * @function
+   * @api stable
+   */
   destroy() {
     this.map_.removeControls(this.controls_);
-    this.map_ = null;
-    this.controls_ = null;
-    this.panel_ = null;
-    this.name = null;
+    [this.map_, this.controls_, this.panel_] = [null, null, null];
+  }
+
+  /**
+   * @getter
+   * @public
+   */
+  get name() {
+    return 'addservices';
+  }
+
+  /**
+   * This function gets metadata plugin
+   *
+   * @public
+   * @function
+   * @api stable
+   */
+  getMetadata() {
+    return this.metadata_;
   }
 }
