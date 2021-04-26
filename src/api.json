@@ -28,12 +28,13 @@
     "name": "addservices",
     "description": "Añade servicio WMS",
     "text": "Añade un capa desde un servicio WMS",
-    "version": "1.1.0",
-    "date": "Junio, 2020",
+    "version": "1.1.1",
+    "date": "Abril, 2021",
     "author": "",
     "org": "Instituto de Estadística y Cartografía. Junta de Andalucía",
     "tags": "mapea,plugin",
     "icon": "./facade/assets/icons/icons.svg",
-    "centralized": true
+    "centralized": true,
+    "compatibility": ["5","6"]
   }
 }
