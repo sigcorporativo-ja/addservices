@@ -99,7 +99,7 @@ export default class AddServicesControl extends M.Control {
               const getCapabilitiesUtils = new M.impl.GetCapabilities(
                 getCapabilities,
                 this.urlService.value,
-                this.facadeMap.getProjection().code
+                this.facadeMap.getProjection().code,
               );
               this.capabilities = getCapabilitiesUtils.getLayers();
               this.showResults();
